@@ -1,1 +1,32 @@
-<p>price works!</p>
+<div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="FlyFrom"
+        [(ngModel)]="from"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="FlyTo"
+        [(ngModel)]="to"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Curr"
+        [(ngModel)]="curr"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="getPrice()"
+        >
+          Search
+        </button>
+        <h1 class="text-center">{{price}}</h1>
+      </div>
+    </div>
+  </div>
