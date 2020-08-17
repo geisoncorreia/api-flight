@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+
 @RequestMapping("/api/v1")
 @RestController
 @RequiredArgsConstructor
@@ -17,9 +19,17 @@ public class FlightController {
 
     private final FlightClient flightClient;
 
-    @RequestMapping("/flyFrom/{flyFrom}/to/{to}/flighter")
-    public ResponseEntity<FlightDTO> getFlighter(@PathVariable("flyFrom") String flyFrom,
-                                             @PathVariable("to") String to) {
-        return new ResponseEntity<FlightDTO>(flightClient.getFlightFrom(flyFrom, to), HttpStatus.OK);
+    @RequestMapping("/flyFrom/{flyFrom}/to/{to}/curr/{curr}/flighter")
+    public ResponseEntity<FlightDTO> getFlighter(@PathVariable(value = "flyFrom", required = true) String flyFrom,
+                                                 @PathVariable(value = "to", required = true) String to,
+                                                 @PathVariable(value = "curr", required = true) String curr) {
+        return new ResponseEntity<FlightDTO>(flightClient.getFlightFrom(flyFrom, to, curr), HttpStatus.OK);
+    }
+
+    @RequestMapping("/flyFrom/{flyFrom}/to/{to}/curr/{curr}/price")
+    public ResponseEntity<BigDecimal> getPrice(@PathVariable(value = "flyFrom", required = true) String flyFrom,
+                                               @PathVariable(value = "to", required = true) String to,
+                                               @PathVariable(value = "curr", required = true) String curr) {
+        return new ResponseEntity<BigDecimal>(flightClient.getPrice(flyFrom, to, curr), HttpStatus.OK);
     }
 }
