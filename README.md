@@ -13,3 +13,5 @@ http://localhost:8080/swagger-ui.html
 
 http://localhost:8080/api/v1/flyFrom/OPO/to/FOR/flighter
 
+http://localhost:8080/api/v1/flyFrom/FOR/to/BR/curr/OPO/price
+
