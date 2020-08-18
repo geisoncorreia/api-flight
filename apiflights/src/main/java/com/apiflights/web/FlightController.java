@@ -33,7 +33,7 @@ public class FlightController {
     @RequestMapping("/flyFrom/{flyFrom}/to/{to}/curr/{curr}/price")
     public ResponseEntity<BigDecimal> getPrice(@PathVariable(value = "flyFrom", required = true) String flyFrom,
                                                @PathVariable(value = "to", required = true) String to,
-                                               @PathVariable(value = "curr", required = true) String curr) {
+                                               @PathVariable(value = "curr", required = true) String curr) throws Exception{
 
         if(Strings.isNullOrEmpty(flyFrom) || Strings.isNullOrEmpty(to) || Strings.isNullOrEmpty(curr)) {
             new ResponseEntity<>(HttpStatus.BAD_REQUEST);
