@@ -1,32 +1,49 @@
-<div class="col-md-8">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="FlyFrom"
-        [(ngModel)]="from"
-      />
-      <input
-        type="text"
-        class="form-control"
-        placeholder="FlyTo"
-        [(ngModel)]="to"
-      />
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Curr"
-        [(ngModel)]="curr"
-      />
-      <div class="input-group-append">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="getPrice()"
-        >
-          Search
-        </button>
-        <h1 class="text-center">{{price}}</h1>
-      </div>
+<div class="card m-3">
+    <h5 class="card-header">Flights</h5>
+    <div class="card-body">
+        <form [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col">
+
+                    <div class="form-group col-5">
+                        <label>From</label>
+                        <input type="text" formControlName="from" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.from.errors }" />
+                        <div *ngIf="submitted && f.from.errors" class="invalid-feedback">
+                            <div *ngIf="f.from.errors.required">From is required</div>
+                        </div>
+                    </div>   
+
+                    <div class="form-group col-5">
+                        <label>To</label>
+                        <input type="text" formControlName="to" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.to.errors }" />
+                        <div *ngIf="submitted && f.to.errors" class="invalid-feedback">
+                            <div *ngIf="f.to.errors.required">To is required</div>
+                        </div>
+                    </div>  
+
+                    <div class="form-group col-5">
+                        <label>Curr</label>
+                        <input type="text" formControlName="curr" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.curr.errors }" />
+                        <div *ngIf="submitted && f.curr.errors" class="invalid-feedback">
+                            <div *ngIf="f.curr.errors.required">Curr is required</div>
+                        </div>
+                    </div>  
+        
+                    <div class="input-group mb-3">
+                        <div class="text-center">
+                            <button class="btn btn-primary mr-1">Register</button>
+                            <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                        </div>
+                      </div>
+                      <div class="input-group mb-3">
+                        <label>Price</label>
+                        <h3 class="text-center">{{flight.price}}</h3>
+                      </div>
+                      
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
+
+
