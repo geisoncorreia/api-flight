@@ -29,7 +29,7 @@ public class FlightClient {
     }
 
     public BigDecimal getPrice(String flyFrom, String to, String curr) {
-        String params = "?flyFrom="+flyFrom+"&to="+to+"&curr="+curr;
+        String params = "?flyFrom="+flyFrom.toUpperCase()+"&to="+to.toUpperCase()+"&curr="+curr.toUpperCase();
         FlightDTO flightDTO = restTemplate.getForObject(apihost + params + PATH_V1, FlightDTO.class);
         return Arrays.stream(flightDTO.getData()).findFirst().get().getPrice();
     }
