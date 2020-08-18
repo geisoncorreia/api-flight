@@ -15,3 +15,9 @@ http://localhost:8080/api/v1/flyFrom/OPO/to/FOR/curr/BR/flighter/
 
 http://localhost:8080/api/v1/flyFrom/POP/to/FOR/curr/BR/price
 
+# Frontend
+
+This project was generated with Angular CLI version 10.0.0-next.1.
+
+## Development server
+Run ng serve for a dev server. Navigate to http://localhost:4200/price
